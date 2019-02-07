@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <script src="https://cdn.bootcss.com/vue/2.5.22/vue.js"></script> -->
+<style>
+*{margin:0;padding:0;}
+div{background: #ccc;height:150px;width:250px;margin:5px;float:left;}
+#blank{display: block;float: left;height:310px;width:770px;margin: 5px;
+	border:1px solid red;position: absolute;top:160px;left:260px;}
+	#bbox{display: block;height:640px;width:1300px;border:1px solid green;position: relative;margin:6px 33px 0px 33px;}
+	#btns,#btn{height: 100px;width: 200px;margin:10px;font-size:30px;}
+	#btns{margin-right:100px;float:right;}
+	#btn{margin-left:100px;}
+</style>
+</head>
+<body>
+<span id=bbox>
+	<div>0</div>	
+	<div>1</div>
+	<div>2</div>	
+	<div>3</div>
+ 	<div>4</div>	
+	<div style="position: absolute;right:5px;top:160px;margin-right:0px;">5</div>
+    <div style="position: absolute;right:5px;top:320px;margin-right:0px;">6</div>
+    <span id=blank>
+    	<button  id="btn" >启动</button>
+    	<button  id="btns" onclick="javascript:location.reload();" value="刷新当前页面">重新开局</button>
+    	
+		<p id="pp">输入金额：</p>
+		<span >现金额：</span><span id="pps"></span>
+		
+    </span>
+	<div style="position: absolute;right:5px;top:480px;margin-right:0px;">7</div>	
+	<div style="position: absolute;right:260px;bottom:5px;margin-bottom:0px;">8</div>
+    <div style="position: absolute;right:520px;bottom:5px;margin-bottom:0px;">9</div>
+    <div style="position: absolute;right:780px;bottom:5px;margin-bottom:0px;">10中奖,十倍</div>	
+	<div style="position: absolute;right:1040px;bottom:5px;margin-bottom:0px;">11</div>
+	<div style="position: absolute;left:5px;top:320px;margin-left:0px;">12</div>	
+	<div style="position: absolute;left:5px;top:160px;margin-left:0px;">13</div>
+ 	
+</span>
+	
+    	
+	
+<script>
+	
+	var mm=prompt('输入金额');
+	var y=parseInt(mm, 10);
+	var pp=document.getElementById("pp");
+	var pps=document.getElementById("pps");
+	var spans=document.getElementsByTagName('div');
+	var btn=document.getElementById('btn');
+	var btns=document.getElementById('btns');
+	var tt=0;
+	pp.innerHTML+=y;
+	pps.innerHTML=y;
+
+	function replay()
+	{
+		for(var oo=0;oo<spans.length;oo++)
+		{
+			spans[oo].style.background="#ccc";
+		}
+	}
+	
+ 
+	
+
+
+	function good(i)
+	{
+	spans[i].style.background="yellow";
+	
+
+
+	if(i>0)
+		{spans[i-1].style.background="#ccc";
+
+
+		}
+
+	}
+
+
+
+function gg(k)
+{
+	for(var i=0;i<=k;i++)
+			{	
+				
+				setTimeout("good("+i+")",400*i);
+				
+
+
+			}
+}
+
+
+
+
+
+	function chose()
+{		var start=new Date().getTime();	
+	replay();
+	if(y-10*tt<0)
+ 		{alert('金额不足');}
+	gog();
+	
+ 	tt++;
+ 	
+ 	y=y-10;
+ 	pps.innerHTML=y;
+ 	setTimeout(function(){
+ 	
+var k=Math.floor(Math.random()*14+0);
+	
+	if(k==10)
+			{
+			setTimeout(function(){pps.innerHTML=y+100;y=y+100;},2000);
+			}		
+	setTimeout("gg("+k+")",1000);
+		},8900);
+ 	
+ 	
+ 	
+}
+
+
+
+
+btn.onclick=chose;
+
+function gog()
+ {	
+
+		for(var i=0;i<spans.length;i++)
+			{	
+				for(var v=0;v<4;v++)
+				{
+					if(v==3)
+						{
+						setTimeout("bood("+i+")",100*(4*i+14*v));
+						
+						}
+					else
+						{setTimeout("bood("+i+")",100*(i+14*v));}
+
+				}
+			}
+
+var end=new Date().getTime();return end;
+ 	}
+	
+ function bood(i)
+	{
+	spans[i].style.background="yellow";
+	if(i==13)
+			{	
+				setTimeout(function(){spans[13].style.background="#ccc";
+					
+				},400)
+		        
+	        }	
+
+
+	if(i>0)
+		{spans[i-1].style.background="#ccc";
+
+	
+		}
+
+	}
+
+		
+
+	// var result=function()(return Math.random()*10);
+	// var m=result();
+
+// 	var someDate = new Date("May 25, 2004");
+// 	var n=Date.now();
+// function sayhi(){
+// 	alert(someDate);
+// }
+// 	sayhi();
+// var m=Date.now();
+// var result=m-n;
+// document.write(Math.round(result/1000)+'秒');
+//    alert(Math.random());
+//    var lowest=prompt('输入最小编号');
+//    var highest=prompt('输入最大编号');
+//    var result=function(lowest,highest)
+//    {
+//    	var choice=highest-lowest+1;
+//    	return Math.round(Math.random()*choice+lowest);
+//    }
+//    var m=result(lowest,highest);
+// alert(m);
+
+</script>
+</body>
+</html>
